@@ -1,9 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Grammar Checker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Grammar Checker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Setup Successful!</h1>
+    <div class="container">
+        <h1>AI Grammar Checker</h1>
+        
+        <div class="text-boxes">
+            <div class="input-section">
+                <h3>Input Text</h3>
+                <textarea 
+                    id="inputText" 
+                    placeholder="Enter your text here..."
+                    spellcheck="false"
+                ></textarea>
+            </div>
+
+            <div class="controls">
+                <button onclick="checkGrammar()">Check Grammar →</button>
+            </div>
+
+            <div class="output-section">
+                <h3>Corrected Text</h3>
+                <textarea 
+                    id="outputText" 
+                    readonly
+                    placeholder="Corrected text will appear here..."
+                ></textarea>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by Gemini 1.5 Flash</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
