@@ -3,39 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grammar Checker Pro</title>
+    <title>Grammar Checker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Grammar Checker Pro</h1>
+        <h1>Grammar Checker</h1>
         
         <div class="editor">
             <div class="input-area">
-                <h3>Your Text</h3>
                 <textarea 
                     id="inputText" 
-                    placeholder="Type or paste text here..."
+                    placeholder="Enter your text here..."
                     spellcheck="false"
                 ></textarea>
             </div>
 
             <button id="checkButton">
-                <span class="button-text">Check Now</span>
-                <div class="spinner" hidden></div>
+                Check Grammar
+                <div class="spinner"></div>
             </button>
 
             <div class="output-area">
-                <h3>Corrected Text</h3>
                 <textarea 
                     id="outputText" 
                     readonly
-                    placeholder="Corrected version will appear here..."
+                    placeholder="Corrected text will appear here..."
                 ></textarea>
             </div>
         </div>
-
-        <div class="status-bar" id="status"></div>
     </div>
     <script src="script.js"></script>
 </body>
