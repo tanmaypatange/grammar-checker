@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Grammar Checker</title>
+    <title>Grammar Checker Pro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🔒 Secure Grammar Checker</h1>
+        <h1>Grammar Checker Pro</h1>
         
-        <div class="text-container">
-            <div class="input-section">
+        <div class="editor">
+            <div class="input-area">
+                <h3>Your Text</h3>
                 <textarea 
                     id="inputText" 
-                    placeholder="Enter your text here..."
+                    placeholder="Type or paste text here..."
                     spellcheck="false"
                 ></textarea>
             </div>
-            
+
             <button id="checkButton">
-                <span class="btn-text">Check Grammar</span>
-                <span class="loader" hidden></span>
+                <span class="button-text">Check Now</span>
+                <div class="spinner" hidden></div>
             </button>
 
-            <div class="output-section">
+            <div class="output-area">
+                <h3>Corrected Text</h3>
                 <textarea 
                     id="outputText" 
                     readonly
-                    placeholder="Corrected text will appear here..."
+                    placeholder="Corrected version will appear here..."
                 ></textarea>
             </div>
         </div>
 
-        <div class="security-notice">
-            <p>🔐 API keys secured through Cloudflare proxy</p>
-        </div>
+        <div class="status-bar" id="status"></div>
     </div>
     <script src="script.js"></script>
 </body>
