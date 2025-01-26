@@ -1,4 +1,4 @@
-const PROXY_URL = 'YOUR_CLOUDFLARE_WORKER_URL'; // Replace with your URL
+const PROXY_URL = 'https://grammar-checker-proxy.tanmay-patange.workers.dev'; // Replace with your URL
 const MAX_RETRIES = 2;
 const inputText = document.getElementById('inputText');
 const outputText = document.getElementById('outputText');
