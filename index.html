@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Grammar Checker</title>
+    <title>Secure Grammar Checker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>AI Grammar Checker</h1>
+        <h1>🔒 Secure Grammar Checker</h1>
         
-        <div class="text-boxes">
+        <div class="text-container">
             <div class="input-section">
-                <h3>Input Text</h3>
                 <textarea 
                     id="inputText" 
                     placeholder="Enter your text here..."
                     spellcheck="false"
                 ></textarea>
             </div>
-
-            <div class="controls">
-                <button onclick="checkGrammar()">Check Grammar →</button>
-            </div>
+            
+            <button id="checkBtn">
+                <span class="btn-text">Check Grammar</span>
+                <span class="loader" hidden></span>
+            </button>
 
             <div class="output-section">
-                <h3>Corrected Text</h3>
                 <textarea 
                     id="outputText" 
                     readonly
@@ -34,11 +33,10 @@
             </div>
         </div>
 
-        <div class="footer">
-            <p>Powered by Gemini 1.5 Flash</p>
+        <div class="security-notice">
+            <p>🔐 API keys secured through Cloudflare proxy</p>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
