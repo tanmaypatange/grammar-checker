@@ -1,60 +1,45 @@
-const PROXY_URL = 'https://grammar-checker-proxy.tanmay-patange.workers.dev'; // Replace with your URL
-const MAX_RETRIES = 2;
+const PROXY_URL = 'https://grammar-checker-proxy.tanmay-patange.workers.dev';
 const inputText = document.getElementById('inputText');
 const outputText = document.getElementById('outputText');
-const checkBtn = document.getElementById('checkBtn');
+const checkButton = document.getElementById('checkButton');
 const loader = document.querySelector('.loader');
 
-async function handleGrammarCheck(retries = MAX_RETRIES) {
+async function checkGrammar() {
     const text = inputText.value.trim();
     
     if (!text) {
-        showError('Please enter some text');
-        inputText.focus();
+        outputText.value = "Please enter some text first";
+        outputText.style.color = '#e74c3c';
         return;
     }
 
     try {
-        toggleLoading(true);
-        
+        checkButton.disabled = true;
+        loader.hidden = false;
+        outputText.style.color = 'inherit';
+        outputText.value = "Analyzing text...";
+
         const response = await fetch(PROXY_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain' },
             body: text
         });
 
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-        
+        if (!response.ok) {
+            throw new Error(`Server responded with ${response.status}`);
+        }
+
         const corrected = await response.text();
         outputText.value = corrected;
-        clearError();
 
     } catch (error) {
-        console.error('Check failed:', error);
-        if (retries > 0) {
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            return handleGrammarCheck(retries - 1);
-        }
-        showError('Failed to check grammar. Please try later.');
+        console.error('Error:', error);
+        outputText.value = "Error: " + error.message;
+        outputText.style.color = '#e74c3c';
     } finally {
-        toggleLoading(false);
+        checkButton.disabled = false;
+        loader.hidden = true;
     }
 }
 
-function toggleLoading(isLoading) {
-    checkBtn.disabled = isLoading;
-    loader.hidden = !isLoading;
-    document.querySelector('.btn-text').textContent = 
-        isLoading ? 'Checking...' : 'Check Grammar';
-}
-
-function showError(message) {
-    outputText.value = message;
-    outputText.style.borderColor = 'var(--error)';
-}
-
-function clearError() {
-    outputText.style.borderColor = '#ddd';
-}
-
-checkBtn.addEventListener('click', handleGrammarCheck);
+checkButton.addEventListener('click', checkGrammar);
